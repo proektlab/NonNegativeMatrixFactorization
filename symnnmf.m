@@ -30,7 +30,6 @@ while i<=maxiter && F>Ftol
    c=c_new;
    X=X_new;
    i=i+1;
-   disp(i);
 end
 if i==maxiter
    disp('Maximum Iterations reached without convergence'); 
