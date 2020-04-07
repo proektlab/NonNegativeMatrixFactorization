@@ -37,6 +37,15 @@ else
     disp(['Converged after ' num2str(i) ' iterations']);
 end
 
+% reorder the columns in terms of goodness of reconstruction;
+Ord=zeros(k,1);
+for i=1:length(Ord)
+   Ord(i)=cost(G,X(:,i)); 
+end
+[~,Ind]=sort(Ord, 'ascend');
+X=X(:,Ind);
+
+
 X=X./sum(X,2);                  % normalize such that the elements denote probabilities. 
 
 
