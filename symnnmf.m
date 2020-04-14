@@ -8,16 +8,19 @@ function [X] = symnnmf(G,k)
 %  
 maxiter=1000;
 Ftol=0.00000001;
-% check for symmetry
-if G~=G'
-    error('This algorithm works only on symmetric graphs');
-end
+
 % check if square
 [S1, S2]=size(G);
 
 if S1~=S2
     error('Graph needs to be square');
 end
+
+% check for symmetry
+if any(G~=G', 'all')
+    error('This algorithm works only on symmetric graphs');
+end
+
 % intial guess
 X=rand(S1,k);
 i=1;
